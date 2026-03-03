@@ -364,7 +364,7 @@ pub const AsyncPoll = struct {
 
                             assert(pfd.revents & std.posix.POLL.OUT != 0);
                             const count = std.posix.send(inner.socket, inner.buffer, 0) catch |e| {
-                                log.err("send failed with {}", .{e});
+                                log.err("send failed with {any}", .{e});
                                 const err = switch (e) {
                                     std.posix.SendError.WouldBlock => {
                                         log.debug("send wouldblock - not removing", .{});

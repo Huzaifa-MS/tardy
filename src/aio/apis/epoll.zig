@@ -315,7 +315,7 @@ pub const AsyncEpoll = struct {
 
                             // Should NEVER fail.
                             _ = std.posix.read(epoll.wake_event_fd, buffer[0..]) catch |e| {
-                                log.err("wake failed: {}", .{e});
+                                log.err("wake failed: {any}", .{e});
                                 unreachable;
                             };
 
